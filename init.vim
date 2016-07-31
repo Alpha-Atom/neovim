@@ -26,7 +26,7 @@ call dein#add('junegunn/seoul256.vim')
 
 call dein#end()
 
-" Required:
+" Things for dein:
 filetype plugin indent on
 
 " If you want to install not installed plugins on startup.
