@@ -71,6 +71,19 @@ nnoremap L $
 " Remap JJ to escape cause muh homerow
 inoremap JJ <Esc>
 
+" Quickly repeat the last command
+map <leader>! :exec '!!'<CR>
+
+" Add a semicolon to the end of the current line
+nnoremap <leader>; m`A;<Esc>``
+
+" Open a Terminal
+nnoremap <leader>t :term<CR>
+
+" Toggle comments
+nnoremap <leader>c :Commentary<CR>
+vnoremap <leader>c :Commentary<CR>
+
 " Airline stuff
 let g:airline_powerline_fonts = 1
 let g:airline_extensions = ['tabline', 'branch']
