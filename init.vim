@@ -14,7 +14,7 @@ call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-unimpaired')
 call dein#add('tpope/vim-repeat')
-call dein#add('jelera/vim-javascript-syntax')
+call dein#add('pangloss/vim-javascript')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('airblade/vim-gitgutter')
@@ -35,6 +35,8 @@ if dein#check_install()
 endif
 
 set rtp+=/usr/local/opt/fzf
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+set noshowmode
 
 " Sensible leader mappings
 let mapleader = " "
@@ -42,7 +44,8 @@ let maplocalleader = " "
 
 " Colour stuff
 syntax on
-colo janah
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+colo apprentice 
 
 " Allow pasting from OS clipboard
 set clipboard^=unnamed 
@@ -50,6 +53,7 @@ set clipboard^=unnamed
 " Tabs -> spaces
 set tabstop=2
 set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 " Highlight the current line
@@ -72,7 +76,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_extensions = ['tabline', 'branch']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled = 1
-let g:airline_theme='badwolf'
+let g:airline_theme='bubblegum'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
