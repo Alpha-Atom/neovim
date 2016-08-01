@@ -14,7 +14,9 @@ call dein#add('tpope/vim-commentary')
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-unimpaired')
 call dein#add('tpope/vim-repeat')
+call dein#add('mhinz/vim-sayonara')
 call dein#add('pangloss/vim-javascript')
+call dein#add('bling/vim-bufferline')
 call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('airblade/vim-gitgutter')
@@ -64,6 +66,15 @@ filetype indent on
 set autoindent
 set smartindent
 
+" Undo history settings
+set undofile " Store undo history in a file
+set undodir=~/.vimundo " Store all undo history in the same directory
+
+" Disable stupid backup and swap files
+set nobackup
+set nowritebackup
+set noswapfile
+
 " Movement bindings
 nnoremap H ^
 nnoremap L $
@@ -84,12 +95,44 @@ nnoremap <leader>t :term<CR>
 nnoremap <leader>c :Commentary<CR>
 vnoremap <leader>c :Commentary<CR>
 
+noremap <leader><space> :nohl<CR>
+vnoremap <leader><space> :nohl<CR>
+
+" Navigate through buffers
+set hidden
+nnoremap <Leader>h :bprevious<CR>
+nnoremap <Leader>l :bnext<CR>
+
+" Delete the current buffer (closes buffer and window)
+nnoremap <leader>wd :Sayonara<CR>
+
+" Close current buffer
+nnoremap <leader>wc :Sayonara!<CR>
+
+" Yeah
+command WQ wq
+command Wq wq
+command W w
+command Q q
+
+let s:termbuf = 0
+
+" Terminal
+augroup terminal
+  autocmd TermOpen * setlocal nospell
+  autocmd TermOpen * set nolist
+  autocmd TermOpen * set nocursorline
+  autocmd TermOpen * set bufhidden=hide
+augroup END
+
 " Airline stuff
 let g:airline_powerline_fonts = 1
-let g:airline_extensions = ['tabline', 'branch']
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_extensions = ['branch', 'bufferline']
 let g:airline#extensions#branch#enabled = 1
 let g:airline_theme='bubblegum'
+
+" Get rid of bufferline stuff now it's in the echo
+let g:bufferline_echo = 0
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
